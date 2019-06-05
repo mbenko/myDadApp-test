@@ -15,6 +15,11 @@ namespace myDadApp.Controllers
             return View();
         }
 
+        public IActionResult MyChores()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();

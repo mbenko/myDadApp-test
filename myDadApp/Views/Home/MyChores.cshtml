@@ -1,0 +1,35 @@
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Config
+
+@{
+    ViewData["Title"] = "Chores";
+}
+
+<link href="~/css/myChores.css" rel="stylesheet" />
+
+<div id='wrapper'>
+    <div class="myArticle">
+        <div class="myHeader">
+            <h2>Ask Dad...</h2>
+
+            <form id='add-item'>
+                <button type='submit'>Add</button>
+                <div><input type='text' id='new-item-text' placeholder='Enter new task' /></div>
+            </form>
+        </div>
+
+        <ul id='todo-items'>
+            <li id='data-todoitem-id'><button class='item-delete'>Delete</button><input type='checkbox' class='item-complete'><div><input class='item-text' value='Mow the lawn' /></div></li>
+            <li id='data-todoitem-id'><button class='item-delete'>Delete</button><input type='checkbox' class='item-complete'><div><input class='item-text' value='Brush your teeth' /></div></li>
+            <li id='data-todoitem-id'><button class='item-delete'>Delete</button><input type='checkbox' class='item-complete'><div><input class='item-text' value="Where's your mother?" /></div></li>
+        </ul>
+        <p id='summary'>Loading...(not really)</p>
+    </div>
+
+    <footer>
+        <a href='http://www.benkotips.com/'>
+            Visit BenkoTIPS for info about today's talk!
+        </a>
+    </footer>
+</div>
+

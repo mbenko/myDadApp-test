@@ -43,9 +43,15 @@ namespace myDadApp.Controllers
         }
 
         // GET: Chores/Create
-        public IActionResult Create()
+        public IActionResult Create(string id)
         {
-            return View();
+            var model = new Chore();
+
+            if (!string.IsNullOrEmpty(id))
+            {
+                model.Owner = _context.Chore.Where(c => c.Id == id).FirstOrDefault().Title;
+            }
+            return View(model);
         }
 
         // POST: Chores/Create
@@ -53,12 +59,12 @@ namespace myDadApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Title,Description,Owner,CreatedAt,CompleteAt")] Chore chore)
+        public async Task<IActionResult> Create([Bind("Title,Description,Owner,CreatedAt,CompleteAt")] Chore chore)
         {
             if (ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(chore.Id))
-                    chore.Id = Guid.NewGuid().ToString();
+                //if (string.IsNullOrEmpty(chore.Id))
+                chore.Id = Guid.NewGuid().ToString();
 
                 if (string.IsNullOrEmpty(chore.Owner))
                     chore.Owner = User.Identity.Name;

@@ -14,5 +14,6 @@ namespace myDadApp.Models
         }
 
         public DbSet<myDadApp.Models.Chore> Chore { get; set; }
+        public DbSet<vChores> vChores { get; set; }
     }
 }

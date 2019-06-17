@@ -21,7 +21,7 @@ namespace myDadApp.Controllers
         // GET: Chores
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Chore.ToListAsync());
+            return View(await _context.vChores.Where(c => !c.CompleteAt.HasValue).OrderBy(c => c.Sort).ToListAsync());
         }
 
         // GET: Chores/Details/5

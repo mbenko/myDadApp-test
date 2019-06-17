@@ -49,7 +49,7 @@ namespace myDadApp.Controllers
 
             if (!string.IsNullOrEmpty(id))
             {
-                model.Owner = _context.Chore.Where(c => c.Id == id).FirstOrDefault().Title;
+                model.ParentId = _context.Chore.Where(c => c.Id == id).FirstOrDefault().Title;
             }
             return View(model);
         }
@@ -59,17 +59,17 @@ namespace myDadApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Title,Description,Owner,CreatedAt,CompleteAt")] Chore chore)
+        public async Task<IActionResult> Create([Bind("Title,Description,ParentId,Owner,CreatedAt,CompleteAt")] Chore chore)
         {
             if (ModelState.IsValid)
             {
                 //if (string.IsNullOrEmpty(chore.Id))
                 chore.Id = Guid.NewGuid().ToString();
 
-                if (string.IsNullOrEmpty(chore.Owner))
-                    chore.Owner = User.Identity.Name;
+                if (string.IsNullOrEmpty(chore.ParentId))
+                    chore.ParentId = User.Identity.Name;
                 else
-                    chore.Owner = _context.vChores.Where(c => c.Title.Contains(chore.Owner)).FirstOrDefault().Id;
+                    chore.ParentId = _context.vChores.Where(c => c.Title.Contains(chore.ParentId)).FirstOrDefault().Id;
                 
                 _context.Add(chore);
                 await _context.SaveChangesAsync();
@@ -99,7 +99,7 @@ namespace myDadApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Title,Description,Owner,CreatedAt,CompleteAt")] Chore chore)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Title,Description,ParentId,Owner,CreatedAt,CompleteAt")] Chore chore)
         {
             if (id != chore.Id)
             {

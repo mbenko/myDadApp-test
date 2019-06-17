@@ -10,7 +10,7 @@ using myDadApp.Models;
 namespace myDadApp.Migrations
 {
     [DbContext(typeof(myDataContext))]
-    [Migration("20190529221738_chores")]
+    [Migration("20190617183626_chores")]
     partial class chores
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

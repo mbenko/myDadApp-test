@@ -57,9 +57,14 @@ namespace myDadApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(User.Identity.Name) && string.IsNullOrEmpty(chore.Owner))
-                    chore.Owner = "demo";
+                if (string.IsNullOrEmpty(chore.Id))
+                    chore.Id = Guid.NewGuid().ToString();
 
+                if (string.IsNullOrEmpty(chore.Owner))
+                    chore.Owner = User.Identity.Name;
+                else
+                    chore.Owner = _context.vChores.Where(c => c.Title.Contains(chore.Owner)).FirstOrDefault().Id;
+                
                 _context.Add(chore);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

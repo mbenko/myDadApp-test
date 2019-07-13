@@ -12,6 +12,7 @@
 
 <h2 class="jumbotron font-weight-bold" style="background-color:@Config["FavoriteColor"]" id="joke"></h2>
 
+<img src="test" alt="catpic" id="catpic" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -29,5 +30,15 @@
                 $('#joke').html("Error getting joke");
             }
         });
+
+        $.ajax({
+            type: 'GET',
+            url: 'https://api.thecatapi.com/v1/images/search',
+            dataType: 'json',
+            success: function (rc) {
+                $('#catpic')[0].src = rc[0].url;
+            }
+        });
+
     });
 </script>

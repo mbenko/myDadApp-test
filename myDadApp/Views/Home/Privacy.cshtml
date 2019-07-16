@@ -3,12 +3,20 @@
 }
 <h1>@ViewData["Title"]</h1>
 
-<p>Wisdom from Chuck is from the api at https://api.chucknorris.io</p>
 
-<h1 class="jumbotron font-weight-bold" style="background-color:salmon;" id="joke"></h1>
+
+<div class="text-center">
+    <h1 class="display-4">Chuck says...</h1>
+    <p>Wisdom from Chuck is from the api at https://api.chucknorris.io</p>
+</div>
+
+<h2 class="jumbotron font-weight-bold" style="background-color:salmon;" id="joke"></h2>
+
+<img src="test" alt="Dog pic" class="img-fluid" id="dogpic" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
+
     $(document).ready(function () {
 
         $.ajax({
@@ -24,4 +32,14 @@
             }
         });
     });
+
+    $.ajax({
+        type: 'GET',
+        url: 'https://dog.ceo/api/breeds/image/random',
+        dataType: 'json',
+        success: function (rc) {
+            $('#dogpic')[0].src = rc.message;
+        }
+    });
+
 </script>

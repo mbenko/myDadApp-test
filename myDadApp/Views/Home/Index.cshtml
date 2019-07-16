@@ -5,15 +5,14 @@
     ViewData["Title"] = "Wisdom";
 }
 
-
 <div class="text-center">
-    <h1 class="display-4">John says...</h1>
-    <p>credit to https://icanhazdadjoke.com</a>.</p>
+    <h1 class="display-4">Dad says...</h1>
+    <p>Dad's wisdom brought to you by https://icanhazdadjoke.com</a>.</p>
 </div>
 
 <h2 class="jumbotron font-weight-bold" style="background-color:@Config["FavoriteColor"]" id="joke"></h2>
 
-<img class="img-fluid" src="test" alt="catpic" id="catpic" />
+<img src="test" alt="catpic" id="catpic" />
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
@@ -28,7 +27,7 @@
 
             },
             error: function (request, status, error) {
-                $('#joke').html("Sorry, no joke.");
+                $('#joke').html("Error getting joke");
             }
         });
 
@@ -39,6 +38,7 @@
             success: function (rc) {
                 $('#catpic')[0].src = rc[0].url;
             }
-        })
+        });
+
     });
 </script>

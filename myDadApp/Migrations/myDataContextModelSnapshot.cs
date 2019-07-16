@@ -38,6 +38,30 @@ namespace myDadApp.Migrations
 
                     b.ToTable("Chore");
                 });
+
+            modelBuilder.Entity("myDadApp.Models.vChores", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime?>("CompleteAt");
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("Depth");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Owner");
+
+                    b.Property<string>("Sort");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("v_Chores");
+                });
 #pragma warning restore 612, 618
         }
     }

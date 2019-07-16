@@ -14,6 +14,7 @@ namespace myDadApp.Migrations
                     Id = table.Column<string>(nullable: false),
                     Title = table.Column<string>(nullable: true),
                     Description = table.Column<string>(nullable: true),
+                    ParentId = table.Column<string>(nullable: true),
                     Owner = table.Column<string>(nullable: true),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     CompleteAt = table.Column<DateTime>(nullable: true)
@@ -22,6 +23,7 @@ namespace myDadApp.Migrations
                 {
                     table.PrimaryKey("PK_Chore", x => x.Id);
                 });
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

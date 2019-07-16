@@ -7,6 +7,10 @@
     <ApplicationInsightsAnnotationResourceId>/subscriptions/deee5b77-292d-42b7-8c96-355b6de93166/resourcegroups/rg-mydadapp-poc/providers/microsoft.insights/components/myApp-web</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Migrations\myChores.sql" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="2.5.1" />
@@ -18,6 +22,11 @@
 
   <ItemGroup>
     <WCFMetadata Include="Connected Services" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Data\" />
   </ItemGroup>
 
 </Project>
